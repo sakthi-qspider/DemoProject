@@ -8,7 +8,7 @@ import BrowserFactory.Baetest;
 import PageObject.HomePage;
 
 
-public class SampleAppTest extends Baetest {
+public class SampleApp extends Baetest {
 
 
 
