@@ -1,18 +1,15 @@
 package TestCases;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
 public class Demo2 {
+	
+	
 
-
-
-
+	
 
 	    public static void main(String[] args) {
 	        try {
@@ -30,11 +27,11 @@ public class Demo2 {
 	            for (Row row : sheet) {
 	                for (Cell cell : row) {
 	                	if((cell.toString().equals("UserName"))&&(cell.toString().equals("Password"))) {
-
+	                		
 	                	}else {
 	                		System.out.print(cell.toString() + "\t");
 	                	}
-
+	                    
 	                }
 	                System.out.println(); // Move to the next line after each row
 	            }

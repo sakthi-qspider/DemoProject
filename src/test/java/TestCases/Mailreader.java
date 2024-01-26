@@ -17,7 +17,7 @@ import microsoft.exchange.webservices.data.search.ItemView;
 
 public class Mailreader {
 	@Test
-
+	
 	public void readEmail() throws Exception {
 	ExchangeService service = new ExchangeService(ExchangeVersion.Exchange2010_SP2); // This is the latest version of this library
 
