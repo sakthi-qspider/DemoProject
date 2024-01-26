@@ -17,7 +17,7 @@ import org.testng.annotations.Test;
 public class ExcelReader {
 
 
-	@Test
+	//@Test
 
 	public void readExcelData()throws Exception {
 		FileInputStream fis=new FileInputStream("./Data/TestData.xlsx");

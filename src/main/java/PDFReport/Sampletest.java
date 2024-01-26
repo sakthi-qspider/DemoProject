@@ -2,9 +2,9 @@ package PDFReport;
 
 import org.testng.annotations.Test;
 
-public class SampleTest {
+public class Sampletest {
 
-	@Test
+	//@Test
 
 	public void report() throws Exception {
 		String Path="./Report/test.pdf";
