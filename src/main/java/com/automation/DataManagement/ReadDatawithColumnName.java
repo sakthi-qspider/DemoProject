@@ -1,6 +1,5 @@
 package com.automation.DataManagement;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import org.apache.poi.EncryptedDocumentException;
@@ -12,7 +11,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 
 public class ReadDatawithColumnName {
-	
+
 	FileInputStream fis;
 	static Sheet sheet;
 	Workbook wb;
@@ -27,19 +26,19 @@ public class ReadDatawithColumnName {
 		Row row =null;
 		Cell cell =null;
 		String data = null;
-		
-		
+
+
 		row =sheet.getRow(0);
 		int rowcount = sheet.getFirstRowNum();
-		
+
 		int col_num=0;
-		
+
 		for(int i =0;i<row.getLastCellNum();i++){
-			
+
 			if(row.getCell(i).getStringCellValue().trim().equals(colName.trim()))
 				col_num=i;
 		}
-		
+
 		row=sheet.getRow(1);
 		cell=row.getCell(col_num); //1,1
 		if(cell.getCellType()==CellType.STRING){
@@ -49,13 +48,13 @@ public class ReadDatawithColumnName {
 			 data=String.valueOf(cell.getNumericCellValue());
 		}
 		return data;
-		
-		
-		
-		
-		
-			
-		
+
+
+
+
+
+
+
 	}
 
 }

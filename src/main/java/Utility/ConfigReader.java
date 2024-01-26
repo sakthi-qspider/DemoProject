@@ -2,13 +2,12 @@ package Utility;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.Properties;
 
 public class ConfigReader {
-	
+
 	static Properties prop;
-	
+
 	public static String getConfig(String key) throws Exception {
 		FileInputStream fis;
 		try {
@@ -20,7 +19,7 @@ public class ConfigReader {
 			e.printStackTrace();
 		}
 		return prop.getProperty(key);
-		
+
 	}
 
 }

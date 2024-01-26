@@ -10,17 +10,17 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.testng.annotations.DataProvider;
 
 public class DataGenerator {
-	
+
 @DataProvider(name="testData")
 public String[][]getdata(){
 	String[][] data =getExcelData("./Data/TestData.xlsx","Data");
 	return data;
 }
 public static String[][] getExcelData(String path, String sheetName){
-	
+
 	String[][] data = null;
-	
-	
+
+
 	try{
 		Cell cell;
 		FileInputStream fis = new FileInputStream(path);
@@ -35,7 +35,7 @@ public static String[][] getExcelData(String path, String sheetName){
 				row=sheet.getRow(i);
 				cell=row.getCell(j);
 				data[i-1][j]=cell.getStringCellValue().toString();
-				
+
 			}
 		}
 	}catch(Exception e){
@@ -43,10 +43,10 @@ public static String[][] getExcelData(String path, String sheetName){
 	}
 	return data;
 
-	
+
 	}
 }
-	
+
 
 
 

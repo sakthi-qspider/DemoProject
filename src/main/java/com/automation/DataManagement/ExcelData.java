@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 import org.apache.poi.ss.usermodel.Row;
@@ -26,7 +25,7 @@ public class ExcelData {
 			Workbook wb=WorkbookFactory.create(fis);
 			sheet=wb.getSheet(sheetName);
 		} catch (FileNotFoundException e) {
-		 
+
 			e.printStackTrace();
 		}
 		fis.close();
@@ -35,20 +34,16 @@ public class ExcelData {
 		if(sheet==null){
 			loadExcel();
 		}
-		Map<String, Map<String,String>> parentMap = new HashMap<String, Map<String,String>>();
-        Map<String, String> childMap = new HashMap<String, String>();
-        Iterator<Row> rowIterator = sheet.iterator();
-
-        while( rowIterator.hasNext() )
-        {
-            Row row = rowIterator.next();
+		Map<String, Map<String,String>> parentMap = new HashMap<>();
+        Map<String, String> childMap = new HashMap<>();
+        for (Row row : sheet) {
             childMap.put(row.getCell(0).getStringCellValue(), row.getCell(1).getStringCellValue());
         }
 
         parentMap.put("MASTERDATA", childMap);
 
         return parentMap;
-		
+
 	}
 	 public static String getValue(String key) throws Exception {
 	        Map<String,String> mapValue = getDataMap().get("MASTERDATA");

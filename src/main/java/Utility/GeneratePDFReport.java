@@ -1,8 +1,6 @@
-<<<<<<<< HEAD:src/main/java/Utility/GeneratePDFReport.java
+
 package Utility;
-========
-package PDFReport;
->>>>>>>> 4adc410aae5fc4a8fce5c68f06fbe2485050753c:src/main/java/PDFReport/GeneratePDFReport.java
+
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -17,10 +15,8 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Image;
-import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
-import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
@@ -32,28 +28,28 @@ public class GeneratePDFReport {
   static  Document document;
 	public static Document openPDF(String path) throws Exception, MalformedURLException, IOException {
 		document = new Document();
-		 
-		
-		
 
-      
-        
+
+
+
+
+
 		try {
 			PdfWriter writer=PdfWriter.getInstance(document,new FileOutputStream(path));
 			 HeaderFooterPageEvent event = new HeaderFooterPageEvent();
 			 OuterBorderEvent borderEvent = new OuterBorderEvent();
 			 HeaderFooter image = new HeaderFooter();
-	            
+
 	            // Step 4: Set the event handler to the PdfWriter
 	            writer.setPageEvent(image);
 	            writer.setPageEvent(borderEvent);
 	         writer.setPageEvent(event);
 			document.open();
-			
-			
-			
-			
-			
+
+
+
+
+
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -62,21 +58,21 @@ public class GeneratePDFReport {
 			e.printStackTrace();
 		}
 		return document;
-		
+
 	}
-	
+
 public static Paragraph addParagraph(String comments) {
-	 
+
 	 Paragraph pg=null;
 	 // Set the text color for the paragraph
      Font font = new Font(Font.FontFamily.HELVETICA, 12, Font.NORMAL, BaseColor.BLUE); // Adjust the color as needed
 
      // Add text to the paragraph with the specified color
-     
-	
+
+
 	 try {
 		pg=new Paragraph();
-		 pg.setAlignment(Paragraph.ALIGN_BASELINE);
+		 pg.setAlignment(Element.ALIGN_BASELINE);
 		 pg.add(new Chunk(comments, font));
 		 document.add(pg);
 	} catch (DocumentException e) {
@@ -84,7 +80,7 @@ public static Paragraph addParagraph(String comments) {
 		e.printStackTrace();
 	}
 	return pg;
-	
+
 }
 public static void addScreenshot(String image) throws Exception {
 	  try {
@@ -109,7 +105,7 @@ public static void addScreenshot(String image) throws Exception {
 public static void closeDocument() {
 	document.close();
 }
-  
+
 public static float width() {
 	float documentWidth = document.getPageSize().getWidth() - document.leftMargin() - document.rightMargin();
 	return documentWidth;
@@ -132,15 +128,15 @@ private static class HeaderFooterPageEvent extends PdfPageEventHelper {
         PdfPTable headerTable = new PdfPTable(1);
         headerTable.setTotalWidth(500F);
         headerTable.getDefaultCell().setBackgroundColor(BaseColor.BLUE);
-       
+
 
         // Create a cell and add the header text
         //Paragraph headerText = new Paragraph("Collibra");
         BaseColor textColor = new BaseColor(169,169,169);
         Phrase headerText=new Phrase("Type your Project Name",new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD,textColor));
-       
+
         PdfPCell headerCell = new PdfPCell(headerText);
-        headerCell.setBorder(PdfPTable.ALIGN_CENTER);
+        headerCell.setBorder(Element.ALIGN_CENTER);
         headerCell.setHorizontalAlignment(Element.ALIGN_RIGHT);
         headerCell.setBackgroundColor(new BaseColor(0,128,128)); // LightBlue color
         // Add the cell to the table
@@ -151,28 +147,28 @@ private static class HeaderFooterPageEvent extends PdfPageEventHelper {
 
         // Add the table to the document's header at a specific position
         headerTable.writeSelectedRows(0, -1, 36, document.top() + 20, cb);
-        
-        
-        
+
+
+
 
         // Add the cell to the table
        // headerTable.addCell(headerCell);
-        
+
         //Footer
         PdfPTable footerTable = new PdfPTable(1);
         footerTable.setTotalWidth(500F);
-       
-       
+
+
 
         // Create a cell and add the footer text
         BaseColor footertextColor = new BaseColor(169,169,169);
         Phrase footerText=new Phrase("Type your Company Name/Client Name",new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD,footertextColor));
        // Paragraph footerText = new Paragraph("Tyson Foods...");
         PdfPCell footerCell = new PdfPCell(footerText);
-        footerCell.setBorder(PdfPTable.ALIGN_CENTER);
+        footerCell.setBorder(Element.ALIGN_CENTER);
         footerCell.setHorizontalAlignment(Element.ALIGN_RIGHT);
-        footerCell.setBackgroundColor(new BaseColor(0,128,128)); 
-        
+        footerCell.setBackgroundColor(new BaseColor(0,128,128));
+
         footerTable.addCell(footerCell);
 
         // Get the PdfContentByte to write in the header
@@ -182,7 +178,8 @@ private static class HeaderFooterPageEvent extends PdfPageEventHelper {
 }
 
 static class OuterBorderEvent extends PdfPageEventHelper {
-    public void onEndPage(PdfWriter writer, Document document) {
+    @Override
+	public void onEndPage(PdfWriter writer, Document document) {
         // Add an outer border to each page
         PdfContentByte canvas = writer.getDirectContentUnder();
 
@@ -228,7 +225,7 @@ static class HeaderFooter extends PdfPageEventHelper {
         try {
             // Step 1: Get the PdfContentByte for the header
             PdfContentByte cb = writer.getDirectContent();
-            
+
             // Step 2: Add your header logo image
             Image logo = Image.getInstance("./Logo/TysonLogo.png");
             logo.scaleToFit(100, 100); // adjust the size as needed
@@ -238,14 +235,14 @@ static class HeaderFooter extends PdfPageEventHelper {
             // Set the absolute position of the logo
             logo.setAbsolutePosition(xPosition, yPosition);
             cb.addImage(logo);
-            
-            
+
+
 			/*
 			 * // Position the logo on the page logo.setAbsolutePosition(20, document.top()
 			 * - logo.getScaledHeight() - 10);
-			 * 
+			 *
 			 * // Step 3: Add the image to the header
-			 * 
+			 *
 			 * cb.addImage(logo);
 			 */
         } catch (DocumentException | IOException e) {
