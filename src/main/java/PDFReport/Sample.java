@@ -1,8 +1,6 @@
 package PDFReport;
 
-import org.testng.annotations.Test;
-
-public class Sampletest {
+public class Sample {
 
 	//@Test
 

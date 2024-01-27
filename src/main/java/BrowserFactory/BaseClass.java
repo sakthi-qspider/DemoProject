@@ -11,7 +11,7 @@ import org.testng.annotations.BeforeMethod;
 
 import Utility.ConfigReader;
 
-public class Baetest {
+public class BaseClass {
 	public WebDriver driver;
 	
 	//String browserName="Firefox";

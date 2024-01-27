@@ -4,11 +4,12 @@ package TestCases;
 
 import org.testng.annotations.Test;
 
-import BrowserFactory.Baetest;
+
+import BrowserFactory.BaseClass;
 import PageObject.HomePage;
 
 
-public class SampleApp extends Baetest {
+public class SampleAppTest extends BaseClass {
 
 
 
